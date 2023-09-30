@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\core",
+    "\\app\\core\\models",
+    "\\app\\core\\mvp",
+    "\\app\\core\\mvp\\model",
+    "\\app\\core\\mvp\\presenter",
+    "\\app\\core\\mvp\\view",
+    "\\app\\ui"
+  ],
+  "SelectedNode": "\\app\\core\\mvp\\model\\model.py",
+  "PreviewInSolutionExplorer": false
+}

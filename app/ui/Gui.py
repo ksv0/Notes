@@ -1,0 +1,46 @@
+from tkinter import *
+
+
+import sys
+
+from PyQt6.QtCore import QSize, Qt
+from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
+
+
+# Подкласс QMainWindow для настройки главного окна приложения
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("My App")
+
+        button = QPushButton("Press Me!")
+
+        self.setFixedSize(QSize(400, 300))
+
+        # Устанавливаем центральный виджет Window.
+        self.setCentralWidget(button)
+
+
+app = QApplication(sys.argv)
+
+window = MainWindow()
+window.show()
+
+app.exec()
+
+
+def hello_world():
+    print("Hello world")
+
+
+main = Tk()
+btn = Button(main,
+             width=20,
+             height=7,
+             text="Кнопка",
+             bg="white",
+             fg="black",
+             command=hello_world)
+btn.pack()
+main.mainloop()
