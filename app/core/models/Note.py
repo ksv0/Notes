@@ -15,7 +15,6 @@ class Note:
     def to_csv(self):
         return f"{self.__id},{self.__title},{'{}.{}.{}  {}:{}'.format(self.__create_date.day, self.__create_date.month, self.__create_date.year, self.__create_date.hour, self.__create_date.minute)},{'{}.{}.{}  {}:{}'.format(self.__change_date.day, self.__change_date.month, self.__change_date.year, self.__change_date.hour, self.__change_date.minute)},{self.__notice}"
 
-
     def get_id(self):
         return self.__id
 

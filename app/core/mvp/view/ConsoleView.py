@@ -1,5 +1,4 @@
-from abc import abstractmethod, ABC
-from app.ui.View import View
+from app.core.mvp.view.View import View
 
 
 class ConsoleView(View):
