@@ -1,6 +1,16 @@
 class Config:
     path_to_current_notebook: str = "app/resources/note.csv"
     path_to_config: str = "app/core/config.ini"
+    how_much_to_view: int = 30
+
+    def __init__(self):
+        self.read_config()
+
+    def set_how_much_to_view(self, how_much_to_view: int):
+        self.how_much_to_view = how_much_to_view
+
+    def get_how_much_to_view(self) -> int:
+        return self.how_much_to_view
 
     def set_path_to_resources(self, new_path: str):
         self.path_to_current_notebook = new_path
@@ -8,11 +18,14 @@ class Config:
     def set_path_to_config(self, new_path):
         self.path_to_config = new_path
 
-    def get_path_to_resources(self):
+    def get_path_to_resources(self) -> str:
         return self.path_to_current_notebook
 
-    def get_path_to_config(self):
+    def get_path_to_config(self) -> str:
         return self.path_to_config
 
-    def read_config(self):
+    def read_config(self):  # todo
+        pass
+
+    def save_config(self):  # todo
         pass

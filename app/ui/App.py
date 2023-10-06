@@ -9,7 +9,7 @@ class App:
     def __init__(self):
         self.view: View = ConsoleView()
         self.presenter: Presenter = NotePresenter(self.view)
-        self.screen: int = 1
+
 
     def run(self):
         flag: bool = True

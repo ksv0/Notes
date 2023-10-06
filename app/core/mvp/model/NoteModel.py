@@ -13,6 +13,15 @@ class NoteModel(Model):
         self.book: NoteBook = NoteBook(self.read_file())
         self.current_index: int = 0
 
+    def get_current_index(self):
+        return self.current_index
+
+    def change_current_index(self, new_index: int):
+        self.current_index = new_index
+
+    def get_book(self):
+        return self.book
+
     def read_file(self) -> list[Note]:
         notes: list[Note] = list()
         raw_notes: list[list[str]]
@@ -21,10 +30,6 @@ class NoteModel(Model):
             raw_notes = self.parser_from_zip()
         else:
             return notes
-        # if self.config.get_path_to_resources().endswith(".csv"):
-        #     raw_notes = self.parser_csv()
-        # else:
-        #    self.config.set_path_to_resources(self.config.get_path_to_resources()+".csv")
 
         if raw_notes.__sizeof__():
             return notes
@@ -32,13 +37,14 @@ class NoteModel(Model):
             notes.append(Note(row[0], row[1], row[2], row[3], row[4]))
         return notes
 
-    def parser_from_zip(self):
+    def parser_from_zip(self) -> list[list[str]]:
         lines: list[list[str]] = list()
         with ZipFile(self.config.path_to_current_notebook, "r") as zip_file:
             i: int = 0
             while i < len(zip_file.namelist()):
                 with zip_file.open(zip_file.namelist()[i], "r") as note:
-                    lines.append(note.readlines().__str__()[1:-2].split("><"))# проверить
+                    lines.append(note.readlines().__str__()[1:-2].split("><"))  # проверить
+                i += 1
         return lines
 
     # говно не сработает
@@ -55,13 +61,14 @@ class NoteModel(Model):
     def save_file(self):
         if self.config.get_path_to_resources().endswith(".zip"):
             self.writer_to_zip()
-        # if self.config.path_to_current_note.endswith(".csv"):
-        #     self.writer_csv()
 
     def writer_to_zip(self):
-        with ZipFile(self.config.path_to_current_notebook, "w"):
-            pass # here тут где ult
-        pass
+        with ZipFile(self.config.path_to_current_notebook, "w") as zip_file:
+            i: int = 0
+            while i < len(self.book.get_note_book()):
+                with zip_file.open(self.book.get_note_book()[i].get_title(), "w") as note:
+                    note.write(self.book.get_note_book()[i].to_db())
+                i += 1
 
     def writer_csv(self):
         with open(self.config.path_to_current_notebook, "w", newline="") as fs:

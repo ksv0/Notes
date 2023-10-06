@@ -27,3 +27,15 @@ class Model(ABC):
         pass
 
     pass
+
+    @abstractmethod
+    def get_book(self):
+        pass
+
+    @abstractmethod
+    def get_current_index(self):
+        pass
+
+    @abstractmethod
+    def change_current_index(self, new_index: int):
+        pass
