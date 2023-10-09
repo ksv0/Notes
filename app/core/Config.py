@@ -1,7 +1,10 @@
+import os
+
+
 class Config:
-    path_to_current_notebook: str = "app/resources/note.csv"
+    path_to_current_notebook: str = os.path.abspath("../resources/note.zip").replace("\\", "/")
     path_to_config: str = "app/core/config.ini"
-    how_much_to_view: int = 30
+    how_much_to_view: int = 5
 
     def __init__(self):
         self.read_config()
@@ -18,14 +21,14 @@ class Config:
     def set_path_to_config(self, new_path):
         self.path_to_config = new_path
 
-    def get_path_to_resources(self) -> str:
+    def get_path_to_book(self) -> str:
         return self.path_to_current_notebook
 
     def get_path_to_config(self) -> str:
         return self.path_to_config
 
-    def read_config(self):  # todo
+    def read_config(self):  # todo лень
         pass
 
-    def save_config(self):  # todo
+    def save_config(self):  # todo не буду делать
         pass

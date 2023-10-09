@@ -10,27 +10,17 @@ class App:
         self.view: View = ConsoleView()
         self.presenter: Presenter = NotePresenter(self.view)
 
-
     def run(self):
-        flag: bool = True
-        buttons: list[Button]
 
-        while flag:
+        while self.presenter.get_flag():
 
-            self.view.set(self.presenter.load_preset(self.screen))
-            match self.view.get():# вынести в функцию
-                case 1:
+            self.presenter.load_preset()
+            self.presenter.show_description()
 
-                    pass
-                case 2:
-                    pass
-                case 3:
-                    pass
-                case 4:
-                    pass
-                case 5:
-                    pass
-                case 6:
-                    self.presenter.save()
-            pass
+            try:
+                i: int = int(self.view.get())
+                self.presenter.get_buttons()[i-1].press()
+            except Exception as e:
+                self.view.set("Нет такой функции!")
+
         pass

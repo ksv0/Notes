@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from app.core.models.Note import Note
+
 
 class Model(ABC):
     @abstractmethod
@@ -8,14 +10,6 @@ class Model(ABC):
 
     @abstractmethod
     def read_file(self):
-        pass
-
-    @abstractmethod
-    def parser_csv(self): # to_delete
-        pass
-
-    @abstractmethod
-    def writer_csv(self): # to_delete
         pass
 
     @abstractmethod
@@ -29,7 +23,7 @@ class Model(ABC):
     pass
 
     @abstractmethod
-    def get_book(self):
+    def get_book(self) -> list[Note]:
         pass
 
     @abstractmethod
@@ -38,4 +32,24 @@ class Model(ABC):
 
     @abstractmethod
     def change_current_index(self, new_index: int):
+        pass
+
+    @abstractmethod
+    def find(self, int_id):
+        pass
+
+    @abstractmethod
+    def add_note(self, title, notice):
+        pass
+
+    @abstractmethod
+    def set_title_in_current_note(self, new_title):
+        pass
+
+    @abstractmethod
+    def set_notice_in_current_note(self, new_notice):
+        pass
+
+    @abstractmethod
+    def delete_this_note(self):
         pass

@@ -8,5 +8,5 @@ class NoteBook:
     def add_note(self, note: Note):
         self.__note_book.append(note)
 
-    def get_note_book(self):
+    def get_note_book(self) -> list[Note]:
         return self.__note_book

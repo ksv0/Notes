@@ -1,9 +1,16 @@
 from abc import ABC, abstractmethod
 
+from app.core.models.Button import Button
+
+
 # разделить интерфейсы
 class Presenter(ABC):
     @abstractmethod
     def save(self):
+        pass
+
+    @abstractmethod
+    def get_buttons(self) -> list[Button]:
         pass
 
     @abstractmethod
@@ -23,39 +30,11 @@ class Presenter(ABC):
         pass
 
     @abstractmethod
-    def fifth_action(self):
-        pass
-
-    @abstractmethod
-    def sixth_action(self):
-        pass
-
-    @abstractmethod
-    def seventh_action(self):
-        pass
-
-    @abstractmethod
-    def ninth_action(self):
-        pass
-
-    @abstractmethod
-    def switch_action(self):
-        pass
-
-    @abstractmethod
-    def load_preset(self, screen: int = 1):
+    def load_preset(self):
         pass
 
     @abstractmethod
     def load_first_preset(self):
-        # общий экран
-        # заполнить кнопки
-        # вернуть список кнопок
-        # print("""
-        #             что делаем?
-        #             1. вывести список заметок           | 4. добавить новую заметку     | 7.
-        #             2. открыть заметку                  | 5.                            | 8.
-        #             3. редактировать текущую заметку    | 6. сохранить                  | 9.
         pass
 
     @abstractmethod
@@ -68,3 +47,13 @@ class Presenter(ABC):
     @abstractmethod
     def load_third_preset(self):
         pass
+
+    @abstractmethod
+    def show_description(self):
+        pass
+
+    @abstractmethod
+    def get_flag(self):
+        pass
+
+
