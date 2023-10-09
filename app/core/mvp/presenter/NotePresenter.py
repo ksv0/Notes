@@ -45,7 +45,11 @@ class NotePresenter(Presenter):
                 f"Страница [{self.page + 1}/{len(self.model.get_book()) // self.config.get_how_much_to_view() + 1}]")
 
     def show_this_note(self):
-        self.view.set(self.model.get_book()[self.model.get_current_index()].__repr__())
+        if len(self.model.get_book()) > 0:
+            self.view.set(self.model.get_book()[self.model.get_current_index()].__repr__())
+        else:
+            self.screen = 1
+            self.load_preset()
 
     def change_something_in_current_note(self):
         self.view.set("Что меняем")
