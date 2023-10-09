@@ -12,13 +12,17 @@ from app.core.mvp.model.Model import Model
 
 
 class NoteModel(Model):
-    def delete_this_note(self):
-        pass
-
     def __init__(self, config: Config):
         self.config: Config = config
         self.book: NoteBook = NoteBook(self.read_file())
         self.current_index: int = 0
+
+    def delete_this_note(self):
+        self.book.get_note_book().pop(self.current_index)
+        if self.current_index == len(self.book.get_note_book()):
+            self.current_index -= 1
+        if self.current_index == -1:
+            self.current_index = 0
 
     def set_title_in_current_note(self, new_title):
         self.book.get_note_book()[self.current_index].set_title(new_title)
@@ -59,7 +63,7 @@ class NoteModel(Model):
         try:
             path = "tmp/"
             with ZipFile(self.config.path_to_current_notebook, "r") as zip_file:
-                zip_file.extractall(path, pwd="python_soset_zhopy".encode(),)
+                zip_file.extractall(path, pwd="python_soset_zhopy".encode())
                 zip_file.close()
             rez = sorted(os.listdir(path))
             for n, item in enumerate(rez):

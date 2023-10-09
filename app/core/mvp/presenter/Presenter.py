@@ -3,7 +3,6 @@ from abc import ABC, abstractmethod
 from app.core.models.Button import Button
 
 
-# разделить интерфейсы
 class Presenter(ABC):
     @abstractmethod
     def save(self):
@@ -39,14 +38,8 @@ class Presenter(ABC):
 
     @abstractmethod
     def load_second_preset(self):
-        # экран заметки
-        # заполнить кнопки
-        # вернуть список кнопок
         pass
 
-    @abstractmethod
-    def load_third_preset(self):
-        pass
 
     @abstractmethod
     def show_description(self):
@@ -55,5 +48,3 @@ class Presenter(ABC):
     @abstractmethod
     def get_flag(self):
         pass
-
-

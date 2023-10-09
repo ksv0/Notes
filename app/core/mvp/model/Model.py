@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-
 from app.core.models.Note import Note
 
 
@@ -19,8 +18,6 @@ class Model(ABC):
     @abstractmethod
     def writer_to_zip(self):
         pass
-
-    pass
 
     @abstractmethod
     def get_book(self) -> list[Note]:

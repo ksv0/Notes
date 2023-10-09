@@ -11,12 +11,9 @@ class App:
         self.presenter: Presenter = NotePresenter(self.view)
 
     def run(self):
-
         while self.presenter.get_flag():
-
             self.presenter.load_preset()
             self.presenter.show_description()
-
             try:
                 i: int = int(self.view.get())
                 self.presenter.get_buttons()[i-1].press()

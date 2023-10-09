@@ -5,14 +5,8 @@ class Note:
     def __init__(self, note_id, title, notice, create_date=datetime.now(), change_date=datetime.now()):
         self.__id: int = int(note_id)
         self.__title: str = title
-        if isinstance(create_date, datetime):
-            self.__create_date: datetime = create_date
-            self.__change_date: datetime = change_date
-        else:
-            print("x is not a string")
-
-        #if type(create_date) ==
-
+        self.__create_date: datetime = create_date
+        self.__change_date: datetime = change_date
         self.__notice: str = notice
 
     def __repr__(self):

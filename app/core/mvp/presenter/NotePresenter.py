@@ -110,9 +110,6 @@ class NotePresenter(Presenter):
     def page_right(self):
         self.page += 1
 
-    def load_third_preset(self):
-        pass
-
     def open_note(self):
         try:
             int_id: int = int(self.view.get("id: "))
