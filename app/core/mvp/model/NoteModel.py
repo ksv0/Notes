@@ -63,11 +63,11 @@ class NoteModel(Model):
         try:
             path = "tmp/"
             with ZipFile(self.config.path_to_current_notebook, "r") as zip_file:
-                zip_file.extractall(path, pwd="python_soset_zhopy".encode())
+                zip_file.extractall(path, pwd="python_soset_zhopy".encode("UTF-8"))
                 zip_file.close()
             rez = sorted(os.listdir(path))
             for n, item in enumerate(rez):
-                with open(os.path.join(path, item), 'r') as f:
+                with open(os.path.join(path, item), 'r', encoding="utf-8") as f:
                     string = f.readline().__str__()[1:-1].split("><")
                     lines.append(string)
                 os.remove(os.path.join(path, item))
@@ -85,5 +85,5 @@ class NoteModel(Model):
             pass
         with ZipFile(self.config.get_path_to_book(), "a") as zip_:
             for item in self.book.get_note_book():
-                zip_.writestr(item.get_id().__str__() + item.get_title() + ".txt", item.to_db())
-            zip_.setpassword("python_soset_zhopy".encode())
+                zip_.writestr(item.get_id().__str__() + " " + item.get_title() + ".txt", item.to_db())
+            zip_.setpassword("python_soset_zhopy".encode("UTF-8"))
